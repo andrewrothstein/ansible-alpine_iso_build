@@ -17,7 +17,6 @@ branches:
     - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
 
 env:
-  - OS=alpine_3.6
   - OS=alpine_3.7
   - OS=alpine_3.8
   - OS=alpine_edge
