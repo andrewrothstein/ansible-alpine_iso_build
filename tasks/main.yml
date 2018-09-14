@@ -74,6 +74,7 @@
 - name: build the target ISO
   become: yes
   become_user: abuild
+  when: alpine_iso_build_buildit
   command: '{{alpine_iso_build_home_dir}}/build.{{alpine_iso_build_profile_name}}.sh'
   args:
     creates: '{{alpine_iso_build_iso_dir}}/alpine-{{alpine_iso_build_profile_name}}-{{alpine_iso_build_tag}}-{{alpine_iso_build_arch}}.iso'
