@@ -1,0 +1,38 @@
+---
+galaxy_info:
+  author: Andrew Rothstein
+  description: '@TODO name this role'
+  company: BlueMountain Capital
+  license:
+    - MIT
+  min_ansible_version: 2.0
+  platforms:
+    - name: EL
+      versions:
+        - all
+    - name: Fedora
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+    - name: Alpine
+      versions:
+        - all
+    - name: Archlinux
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - jessie
+        - stretch
+  galaxy_tags:
+    - development
+
+dependencies:
+  - src: andrewrothstein.sudoers
+    version: v1.0.8
+  - src: andrewrothstein.git
+    version: v3.0.2
+  - src: andrewrothstein.ssh-client
+    version: v1.0.2

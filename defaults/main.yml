@@ -1,0 +1,36 @@
+---
+# defaults file for alpine-iso-build
+alpine_iso_build_tag: v3.8
+alpine_iso_build_home_dir: /home/abuild
+alpine_iso_build_iso_dir: /home/abuild/isos
+alpine_iso_build_aports_dir: /home/abuild/aports
+alpine_iso_build_arch: x86_64
+
+alpine_iso_build_profile_name: nas
+alpine_iso_build_base_profile: standard
+alpine_iso_build_kernel_cmdline: unionfs_size=512M console=tty0 console=ttyS0,115200
+alpine_iso_build_syslinux_serial: '0 115200'
+alpine_iso_build_kernel_addons:
+  - zfs
+  - spl
+alpine_iso_build_apks:
+  - iscsi-scst
+  - zfs-scripts
+  - zfs
+  - zfs-utils-py
+  - cciss_vol_status
+  - lvm2
+  - mdadm
+  - mkinitfs
+  - mtools
+  - nfs-utils
+  - parted
+  - rsync
+  - sfdisk
+  - syslinux
+  - unrar
+  - util-linux
+  - xfsprogs
+  - dosfstools
+  - ntfs-3g
+alpine_iso_build_buildit: True

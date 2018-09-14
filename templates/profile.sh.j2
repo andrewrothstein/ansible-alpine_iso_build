@@ -1,0 +1,15 @@
+profile_{{alpine_iso_build_profile_name}}() {
+        profile_{{alpine_iso_build_base_profile}}
+        kernel_cmdline="{{alpine_iso_build_kernel_cmdline}}"
+        syslinux_serial="{{alpine_iso_build_syslinux_serial}}"
+        kernel_addons="{{alpine_iso_build_kernel_addons|default([])|join(' ')}}"
+        apks="$apks {{alpine_iso_build_apks|default([])|join(' ')}}"
+        local _k _a
+        for _k in $kernel_flavors; do
+                apks="$apks linux-$_k"
+                for _a in $kernel_addons; do
+                        apks="$apks $_a-$_k"
+                done
+        done
+        apks="$apks linux-firmware"
+}

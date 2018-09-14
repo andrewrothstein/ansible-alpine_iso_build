@@ -1,0 +1,4 @@
+---
+# vars file for alpine-iso-build
+alpine_iso_build_repository: 'http://dl-cdn.alpinelinux.org/alpine/{{alpine_iso_build_tag}}/main'
+alpine_iso_build_aports_scripts_dir: '{{alpine_iso_build_aports_dir}}/scripts'

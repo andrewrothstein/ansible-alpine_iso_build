@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+cd {{alpine_iso_build_aports_scripts_dir}};
+sh mkimage.sh --tag {{alpine_iso_build_tag}} \
+	--outdir {{alpine_iso_build_iso_dir}} \
+	--arch {{alpine_iso_build_arch}} \
+	--repository {{alpine_iso_build_repository}} \
+	--profile {{alpine_iso_build_profile_name}}
