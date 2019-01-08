@@ -10,6 +10,8 @@
       paths:
         - '{{role_path}}/vars'
 - name: install pkgs
+  become: yes
+  become_user: root
   with_items:
     - alpine-sdk
     - build-base
