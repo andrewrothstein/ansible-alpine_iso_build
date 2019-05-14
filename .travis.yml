@@ -1,36 +1,17 @@
----
-sudo: required
-
-services:
-  - docker
-
-language: python
-python: "2.7"
-
-addons:
-  apt:
-    packages:
-      - python-pip
-
 branches:
   except:
-    - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
-
+  - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
+dist: xenial
 env:
-  - OS=alpine_3.7
-  - OS=alpine_3.8
-  - OS=alpine_edge
-
-before_install:
-  - pip install ansible-galaxy-local-deps dcb==0.0.14
-  - ansible-galaxy-local-deps-write
-
+- OS=alpine_3.7
+- OS=alpine_3.8
+- OS=alpine_edge
+language: python
+python: '3.7'
 script:
-  - >-
-    dcb
-    --upstreamgroup andrewrothstein
-    --upstreamapp docker-ansible-role
-    --pull ${OS}
-    --write ${OS}
-    --build ${OS}
-    --push ${OS}
+- ansible-galaxy-local-deps-write
+- dcb --upstreamgroup andrewrothstein --upstreamapp docker-ansible-role --alltags
+  ${OS} --pullall --writeall --buildall --pushall
+services:
+- docker
+sudo: required
