@@ -12,6 +12,7 @@ galaxy_info:
         - all
   galaxy_tags:
     - alpine
+  role_name: alpine_iso_build
 
 dependencies:
   - andrewrothstein.sudoers
