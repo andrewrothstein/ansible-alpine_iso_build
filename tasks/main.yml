@@ -12,22 +12,21 @@
 - name: install pkgs
   become: true
   become_user: root
-  with_items:
-    - alpine-sdk
-    - build-base
-    - apk-tools
-    - alpine-conf
-    - busybox
-    - fakeroot
-    - syslinux
-    - squashfs-tools
-    - xorriso
-    - mtools
-    - dosfstools
-    - grub-efi
-    - shadow
   package:
-    name: '{{ item }}'
+    name:
+      - alpine-sdk
+      - build-base
+      - apk-tools
+      - alpine-conf
+      - busybox
+      - fakeroot
+      - syslinux
+      - squashfs-tools
+      - xorriso
+      - mtools
+      - dosfstools
+      - grub-efi
+      - shadow
     state: present
 - name: create the abuild user
   become: true
