@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Andrew Rothstein
-  description: '@TODO name this role'
+  description: orchestrates the build of an alpine iso
   company: BlueMountain Capital
   license:
     - MIT
@@ -14,9 +14,6 @@ galaxy_info:
     - alpine
 
 dependencies:
-  - src: andrewrothstein.sudoers
-    version: v1.0.8
-  - src: andrewrothstein.git
-    version: v3.0.2
-  - src: andrewrothstein.ssh-client
-    version: v1.0.2
+  - andrewrothstein.sudoers
+  - andrewrothstein.git
+  - andrewrothstein.ssh-client

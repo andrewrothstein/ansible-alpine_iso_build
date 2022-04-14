@@ -1,16 +1,16 @@
 ---
 - name: resolve platform specific vars
-  include_vars: '{{item}}'
+  include_vars: '{{ item }}'
   with_first_found:
     - files:
-        - '{{ansible_distribution}}-{{ansible_distribution_release}}.yml'
-        - '{{ansible_distribution}}.yml'
-        - '{{ansible_os_family}}.yml'
+        - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
       skip: true
       paths:
-        - '{{role_path}}/vars'
+        - '{{ role_path }}/vars'
 - name: install pkgs
-  become: yes
+  become: true
   become_user: root
   with_items:
     - alpine-sdk
@@ -27,10 +27,10 @@
     - grub-efi
     - shadow
   package:
-    name: '{{item}}'
+    name: '{{ item }}'
     state: present
 - name: create the abuild user
-  become: yes
+  become: true
   become_user: root
   user:
     name: abuild
@@ -39,44 +39,44 @@
       - abuild
       - wheel
 - name: initialize abuild keys
-  become: yes
+  become: true
   become_user: abuild
   command: abuild-keygen -a -i -n
   args:
     creates: /home/abuild/.abuild
 - name: clone aport git repo into abuild home directory
-  become: yes
+  become: true
   become_user: abuild
   git:
     repo: https://github.com/alpinelinux/aports.git
     dest: /home/abuild/aports
 - name: templatize build profile
-  become: yes
+  become: true
   become_user: abuild
   template:
     src: profile.sh.j2
-    dest: '{{alpine_iso_build_aports_scripts_dir}}/mkimg.{{alpine_iso_build_profile_name}}.sh'
+    dest: '{{ alpine_iso_build_aports_scripts_dir }}/mkimg.{{ alpine_iso_build_profile_name }}.sh'
     mode: 0755
 - name: templatize build script
-  become: yes
+  become: true
   become_user: abuild
   template:
     src: build.sh.j2
-    dest: '{{alpine_iso_build_home_dir}}/build.{{alpine_iso_build_profile_name}}.sh'
+    dest: '{{ alpine_iso_build_home_dir }}/build.{{ alpine_iso_build_profile_name }}.sh'
     mode: 0755
 - name: ensure target ISO directory exists
-  become: yes
+  become: true
   become_user: root
   file:
-    path: '{{alpine_iso_build_iso_dir}}'
+    path: '{{ alpine_iso_build_iso_dir }}'
     state: directory
     mode: 0755
     owner: abuild
     group: abuild
 - name: build the target ISO
-  become: yes
+  become: true
   become_user: abuild
   when: alpine_iso_build_buildit
-  command: '{{alpine_iso_build_home_dir}}/build.{{alpine_iso_build_profile_name}}.sh'
+  command: '{{ alpine_iso_build_home_dir }}/build.{{ alpine_iso_build_profile_name }}.sh'
   args:
-    creates: '{{alpine_iso_build_iso_dir}}/alpine-{{alpine_iso_build_profile_name}}-{{alpine_iso_build_tag}}-{{alpine_iso_build_arch}}.iso'
+    creates: '{{ alpine_iso_build_iso_dir }}/alpine-{{ alpine_iso_build_profile_name }}-{{ alpine_iso_build_tag }}-{{ alpine_iso_build_arch }}.iso'
