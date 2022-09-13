@@ -28,6 +28,12 @@
       - grub-efi
       - shadow
     state: present
+- name: create the abuild group
+  become: true
+  become_user: root
+  group:
+    name: abuild
+    state: present
 - name: create the abuild user
   become: true
   become_user: root
