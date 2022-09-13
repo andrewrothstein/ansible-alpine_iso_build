@@ -1,7 +1,7 @@
 ---
 - name: andrewrothstein.sudoers
-  version: v1.0.14
+  version: v1.0.15
 - name: andrewrothstein.git
-  version: v3.1.6
+  version: v3.1.7
 - name: andrewrothstein.ssh-client
-  version: v1.1.0
+  version: v1.1.1
