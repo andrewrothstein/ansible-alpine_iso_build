@@ -1,6 +1,6 @@
 ---
 # defaults file for alpine-iso-build
-alpine_iso_build_tag: v3.15
+alpine_iso_build_tag: v3.17
 alpine_iso_build_home_dir: /home/abuild
 alpine_iso_build_iso_dir: /home/abuild/isos
 alpine_iso_build_aports_dir: /home/abuild/aports
