@@ -1,20 +1,19 @@
 ---
-galaxy_info:
-  author: Andrew Rothstein
-  description: orchestrates the build of an alpine iso
-  company: BlueMountain Capital
-  license:
-    - MIT
-  min_ansible_version: 2.0
-  platforms:
-    - name: Alpine
-      versions:
-        - all
-  galaxy_tags:
-    - alpine
-  role_name: alpine_iso_build
-
 dependencies:
   - andrewrothstein.sudoers
   - andrewrothstein.git
   - andrewrothstein.ssh-client
+galaxy_info:
+  author: Andrew Rothstein
+  company: BlueMountain Capital
+  description: orchestrates the build of an alpine iso
+  galaxy_tags:
+    - alpine
+  license: MIT
+  min_ansible_version: '2.0'
+  namespace: andrewrothstein
+  platforms:
+    - name: Alpine
+      versions:
+        - all
+  role_name: alpine_iso_build
